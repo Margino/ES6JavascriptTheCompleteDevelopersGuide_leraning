@@ -9,5 +9,8 @@ const computers = [
     new Computer('Acer', 32)
 ];
 
-const allComputers = computers.every((computer) => computer.rem > 16);
-console.log(allComputers);
+const allComputers = computers.every((computer) => computer.ram > 16);
+console.log('AllComputers:', allComputers);
+
+const someComputers = computers.some((computer) => computer.ram > 16);
+console.log('SomeComputers:', someComputers);
