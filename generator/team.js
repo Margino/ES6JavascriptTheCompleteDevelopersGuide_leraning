@@ -1,6 +1,10 @@
 const testingTeam = {
     lead: 'Jane',
-    tester: 'Chris'
+    tester: 'Chris',
+    [Symbol.iterator]: function* () {
+        yield this.lead;
+        yield this.tester;
+    }
 };
 
 const engineeringTeam = {
@@ -16,13 +20,7 @@ function* TeamIterator(team) {
     yield team.lead;
     yield team.manager;
     yield team.engineer;
-    const testingTeamGenerator = TestTeamInterator(team.testingTeam);
-    yield* testingTeamGenerator;
-}
-
-function* TestTeamInterator(team) {
-    yield team.lead;
-    yield team.tester;
+    yield* team.testingTeam;
 }
 
 let names = [];
