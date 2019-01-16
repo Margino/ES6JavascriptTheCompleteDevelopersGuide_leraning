@@ -13,20 +13,18 @@ const engineeringTeam = {
     department: 'Engineering',
     lead      : 'Alex',
     manager   : 'John',
-    engineer  : 'Andrew'
+    engineer  : 'Andrew',
+    [Symbol.iterator]: function* () {
+        yield this.lead;
+        yield this.manager;
+        yield this.engineer;
+        yield* this.testingTeam;
+    }
 };
-
-function* TeamIterator(team) {
-    yield team.lead;
-    yield team.manager;
-    yield team.engineer;
-    yield* team.testingTeam;
-}
 
 let names = [];
 
-for (let name of TeamIterator(engineeringTeam)) {
+for (let name of engineeringTeam) {
     names.push(name);
 }
 console.log(names);
-console.log(engineeringTeam);
