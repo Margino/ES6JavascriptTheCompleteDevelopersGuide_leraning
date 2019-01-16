@@ -1,4 +1,10 @@
+const testingTeam = {
+    lead: 'Jane',
+    tester: 'Chris'
+};
+
 const engineeringTeam = {
+    testingTeam,
     size      : 3,
     department: 'Engineering',
     lead      : 'Alex',
@@ -12,9 +18,15 @@ function* TeamIterator(team) {
     yield team.engineer;
 }
 
+function* TestTeamInterator(team) {
+    yield team.lead;
+    yield team.tester;
+}
+
 let names = [];
 
 for (let name of TeamIterator(engineeringTeam)) {
     names.push(name);
 }
 console.log(names);
+console.log(engineeringTeam);
